@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet } from 'react-router-dom';
+import './App.scss';
+import Header from './Components/Header/Header';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className='header-container'>
+        <Header />
+      </div>
+      <div className='main-container'>
+        <div className='side-nav'>
+
+        </div>
+        <div className='app-container'>
+          <div>
+            <Outlet />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

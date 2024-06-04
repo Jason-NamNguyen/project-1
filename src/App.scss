@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  .header-container {
+    .btn-login {
+      border: none;
+      padding: 0 15px;
+      background: none;
+      font-weight: 500;
+    }
+
+    .btn-signup {
+      border-radius: 7px;
+      border-color: rgba(0, 0, 0, 0);
+      padding: 5px 15px;
+      background-color: rgb(54, 54, 54);
+      color: white;
+      font-weight: 600;
+
+      &:hover {
+        background-color: rgb(78, 78, 78);
+        scale: 102%;
+      }
+    }
+
+    @media (min-width: 992px) {
+
+      .container,
+      .container-lg,
+      .container-md,
+      .container-sm {
+        max-width: 1280px;
+      }
+    }
+
+    .navbar {
+      z-index: 10;
+      background-color: transparent !important;
+
+      .nav-link {
+        &.active {
+          color: rgb(63, 143, 209);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+video {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.admin-container {
+  display: flex;
+
+  .admin-sidebar {
+    .ps-sidebar-container {
+      height: 100vh !important;
+    }
+  }
+
+  .admin-content {
+    width: 100%;
+
+    .sb-button {
+      border-radius: 10px;
+      border-color: aquamarine;
+    }
+
+    .admin-header {
+      // border: 1px dashed green;
+      padding: 10px 5px;
+    }
+
+    .admin-main {
+      // border: 1px dashed red;
+      padding: 10px 5px;
+
+      .title {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .btn {
+          width: fit-content;
+        }
+      }
+
+      h3 {
+        justify-content: center;
+      }
+
+      // .user-list {
+      //   // border: 1px solid blue;
+      // }
+    }
+
+    // .manage-user-container {
+    //   .manage-user-content {
+    //     .user-list {
+    //       border: 1px solid blue;
+    //     }
+    //   }
+    // }
+  }
+}
