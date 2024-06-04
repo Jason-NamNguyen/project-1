@@ -13,6 +13,7 @@ import ManageAdmin from './Components/Admin/Content/ManageAdmin';
 import Products from './Components/Admin/Content/Products';
 import Login from './Components/Auth/Login';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './Components/Auth/Register';
 const Layout = () => {
@@ -68,7 +69,7 @@ const Layout = () => {
         <>
             <RouterProvider router={router} />
             <ToastContainer
-                position="top-center"
+                position="top-right"
                 autoClose={3000}
                 hideProgressBar={false}
                 newestOnTop
