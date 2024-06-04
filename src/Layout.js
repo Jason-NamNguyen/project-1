@@ -14,6 +14,7 @@ import Products from './Components/Admin/Content/Products';
 import Login from './Components/Auth/Login';
 import { ToastContainer } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Register from './Components/Auth/Register';
 const Layout = () => {
     const router = createBrowserRouter(
