@@ -1,4 +1,20 @@
 .login-component {
+    .loading-icon {
+        font-size: 20px;
+        margin-bottom: 3px;
+        color: #00d4ff;
+        animation: spin 1s infinite linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
 
     .login-header {
         display: flex;
@@ -50,6 +66,12 @@
                 background: #2a2a2a;
                 color: white;
                 height: 40px;
+
+                &:disabled {
+                    background: #dddddd;
+                    color: #afafaf;
+                    cursor: no-drop;
+                }
             }
 
             .form-group {
