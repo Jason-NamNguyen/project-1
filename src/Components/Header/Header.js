@@ -5,9 +5,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const Header = (props) => {
-    const isAuthenticated = useSelector(state => state.userLogin.isAuthenticated)
-    const account = useSelector(state => state.userLogin.account)
-    console.log('check account', account, 'check authenticated', isAuthenticated)
+    const isAuthenticated = useSelector(state => state?.userLogin?.isAuthenticated)
+    const account = useSelector(state => state?.userLogin?.account)
     const navigate = useNavigate()
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -21,18 +20,21 @@ const Header = (props) => {
                         <NavLink to='/users' className='nav-link'>Users</NavLink>
                         <NavLink to='/admin' className='nav-link'>Admin</NavLink>
                     </Nav>
-                    <Nav>
+                    <Nav className='navbar-dropdown'>
                         {isAuthenticated === false ?
                             <>
                                 <button className='btn-login' onClick={() => navigate('/login')}>Log in</button>
                                 <button className='btn-signup' onClick={() => navigate('/register')}>Sign up</button>
                             </>
                             :
-                            <NavDropdown title="Setting" id="basic-nav-dropdown">
-                                <NavDropdown.Item>My profile</NavDropdown.Item>
-                                <NavDropdown.Item>Preference</NavDropdown.Item>
-                                <NavDropdown.Item>Log out</NavDropdown.Item>
-                            </NavDropdown>
+                            <>
+                                <img src={`data:image/jpeg;base64, ${account.image}`} alt="..." height={`30px`} />
+                                <NavDropdown title={`${account.username}`} id="basic-nav-dropdown">
+                                    <NavDropdown.Item>My profile</NavDropdown.Item>
+                                    <NavDropdown.Item>Preference</NavDropdown.Item>
+                                    <NavDropdown.Item>Log out</NavDropdown.Item>
+                                </NavDropdown>
+                            </>
                         }
                     </Nav>
                 </Navbar.Collapse>

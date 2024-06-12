@@ -1,6 +1,5 @@
 import React from 'react';
 import App from './App';
-import Users from './Components/Users/Users'
 import Admin from './Components/Admin/Admin'
 import {
     createBrowserRouter,
@@ -16,7 +15,17 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './Components/Auth/Register';
+import ListQuiz from './Components/Users/ListQuiz';
+import DetailQuiz from './Components/Users/DetailQuiz';
 const Layout = () => {
+    const NotFound = () => {
+        return (
+            <div className="container mt-3 alert alert-danger">
+                404. Not Found data with URL
+            </div>
+        )
+    }
+
     const router = createBrowserRouter(
         [
             {
@@ -29,7 +38,7 @@ const Layout = () => {
                     },
                     {
                         path: "users",
-                        element: <Users />
+                        element: <ListQuiz />
                     },
                 ]
             },
@@ -56,12 +65,20 @@ const Layout = () => {
                 ]
             },
             {
+                path: "/quiz/:id",
+                element: <DetailQuiz />
+            },
+            {
                 path: "login",
                 element: <Login />
             },
             {
                 path: "register",
                 element: <Register />
+            },
+            {
+                path: "*",
+                element: <NotFound />
             }
         ]
     )

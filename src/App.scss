@@ -30,6 +30,11 @@ body {
       }
     }
 
+    .navbar-dropdown {
+      display: flex;
+      align-items: center;
+    }
+
     @media (min-width: 992px) {
 
       .container,
