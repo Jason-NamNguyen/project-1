@@ -4,12 +4,16 @@ import './login.scss'
 import { postLogin } from '../../Services/apiService';
 import { toast } from 'react-toastify';
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { useDispatch } from 'react-redux';
+import { doLogin } from '../../redux/action/userAction';
+import { ImSpinner } from "react-icons/im";
 const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isShowPassword, setIsShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
     const validateEmail = (email) => {
         return String(email)
             .toLowerCase()
@@ -30,18 +34,22 @@ const Login = (props) => {
             toast.error("Invalid Password")
             return;
         }
-
+        setIsLoading(true)
         //submit apis
         let data = await postLogin(email, password)
         if (data && data.EC === 0) {
+            dispatch(doLogin(data))
             toast.success(data.EM);
+            setIsLoading(false)
+            navigate('/')
 
         }
         else {
             toast.error(data.EM)
+            setIsLoading(false)
 
         }
-        console.log('check ', data)
+
     }
 
     return (
@@ -95,7 +103,20 @@ const Login = (props) => {
                         <span >Forgot your password?</span>
                     </div>
                     <div>
-                        <button className='btn-submit' onClick={() => handleLogin()}> Log in to Bơ Bánh Bao</button>
+                        <button
+                            className='btn-submit'
+                            onClick={() => handleLogin()}
+                            disabled={isLoading}
+                        >
+                            {isLoading === false ?
+                                <span>Log in to Bơ Bánh Bao </span>
+                                :
+                                <div>
+                                    <ImSpinner className="loading-icon" />
+                                    <span>Log in to Bơ Bánh Bao </span>
+                                </div>
+                            }
+                        </button>
                     </div>
                     <div className='back-to-home'>
                         <span onClick={() => navigate('/')} >Back to Homepage</span>

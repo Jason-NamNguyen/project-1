@@ -2,12 +2,16 @@ import Layout from './Layout';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import store from './redux/Store';
+import { store, persistor } from '../src/redux/Store';
+import { PersistGate } from 'redux-persist/integration/react';
+import 'nprogress/nprogress.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <Layout />
+    <PersistGate loading={null} persistor={persistor}>
+      <Layout />
+    </PersistGate>
   </Provider>
 );
 
