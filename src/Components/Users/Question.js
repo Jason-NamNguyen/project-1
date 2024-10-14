@@ -5,9 +5,10 @@ const Question = (props) => {
     if (_.isEmpty(data)) {
         return (<></>)
     }
-    const handleSelectBox = (event, id) => {
+    const handleSelectBox = (event, aId, qId) => {
         // console.log('>> isChecked:', event.target.checked)
-        console.log('data props:', data, id)
+        console.log('data props:', aId, qId);
+        props.handleCheckBox(aId, qId)
     }
     return (
         <>
@@ -33,7 +34,7 @@ const Question = (props) => {
                                         <input
                                             className="form-check-input"
                                             type="checkbox"
-                                            onChange={(event) => handleSelectBox(event, `a${a.id}-q${data.questionId}`)}
+                                            onChange={(event) => handleSelectBox(event, a.id, data.questionId)}
                                         />
                                         <label className="form-check-label" >
                                             {a.description}

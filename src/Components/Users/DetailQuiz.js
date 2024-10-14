@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getDetailQuiz } from "../../Services/apiService";
 import './DetailQuiz.scss';
-import _ from "lodash";
+import _ from 'lodash';
 import Question from "./Question";
+
 const DetailQuiz = (props) => {
     const params = useParams();
     const location = useLocation();
@@ -56,10 +57,27 @@ const DetailQuiz = (props) => {
     const handleFinish = () => {
 
     }
-    const handleCheckBox = (quizId,questionId) => {
+    const handleCheckBox = (answersId, questionId) => {
+        let dataQuizClone = _.cloneDeep(dataQuiz)
+        let question = dataQuizClone.find(item => +item.questionId === +questionId)
+        if (question && question.answers) {
+            let b = question.answers.map(item => {
+                if (+item.id === +answersId) {
+                    item.isSelected = true;
+                }
+                return item;
+            })
+            // console.log(b)
+            question.answers = b
+        }
+        let index = dataQuizClone.findIndex(item => +item.questionId === +questionId)
+        if (index > -1) {
+            dataQuizClone[index] = question;
+            setDataQuiz(dataQuizClone)
+        }
+        console.log('data check: ', dataQuiz)
 
     }
-
     return (
         <div className="detail-quiz-container">
             <div className="left-detail-quiz">
@@ -71,7 +89,13 @@ const DetailQuiz = (props) => {
                 <div className="q-body">
                     <Question
                         index={index}
-                        data={dataQuiz[index]}
+                        handleCheckBox={handleCheckBox}
+                        data={
+                            dataQuiz && dataQuiz.length > 0
+                                ?
+                                dataQuiz[index]
+                                : []
+                        }
                     />
                 </div>
                 <div className="q-footer">
