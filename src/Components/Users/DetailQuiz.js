@@ -41,7 +41,7 @@ const DetailQuiz = (props) => {
                 }
                 )
                 .value()
-            console.log('Check Quiz: ', data)
+            // console.log('Check Quiz: ', data)
             setDataQuiz(data)
         }
 
@@ -63,20 +63,18 @@ const DetailQuiz = (props) => {
         if (question && question.answers) {
             let b = question.answers.map(item => {
                 if (+item.id === +answersId) {
-                    item.isSelected = true;
+                    item.isSelected = !item.isSelected;
                 }
                 return item;
             })
-            // console.log(b)
             question.answers = b
+            // console.log(question.answers)
         }
         let index = dataQuizClone.findIndex(item => +item.questionId === +questionId)
         if (index > -1) {
             dataQuizClone[index] = question;
             setDataQuiz(dataQuizClone)
         }
-        console.log('data check: ', dataQuiz)
-
     }
     return (
         <div className="detail-quiz-container">
