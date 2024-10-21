@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Register from './Components/Auth/Register';
 import ListQuiz from './Components/Users/ListQuiz';
 import DetailQuiz from './Components/Users/DetailQuiz';
+import ManageQuiz from './Components/Admin/Content/Quiz/ManageQuiz';
 const Layout = () => {
     const NotFound = () => {
         return (
@@ -60,8 +61,8 @@ const Layout = () => {
                         element: <ManageAdmin />
                     },
                     {
-                        path: "products",
-                        element: <Products />
+                        path: "manage-quizzes",
+                        element: <ManageQuiz />
                     }
                 ]
             },

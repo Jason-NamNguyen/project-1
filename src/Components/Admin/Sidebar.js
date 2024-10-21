@@ -12,7 +12,7 @@ const SidebarComponent = (props) => {
                     <MenuItem icon={<MdOutlineSpaceDashboard />} component={<Link to="/admin" />}>Dashboard</MenuItem>
                     <MenuItem component={<Link to="/admin/manage-users" />}>Users</MenuItem>
                     <MenuItem component={<Link to="/admin/manage-admin" />}>Admin</MenuItem>
-                    <MenuItem component={<Link to="/admin/products" />}>Products</MenuItem>
+                    <MenuItem component={<Link to="/admin/manage-quizzes" />}>Manage-Quiz</MenuItem>
                     <MenuItem>Reports </MenuItem>
                 </Menu>
             </Sidebar>
