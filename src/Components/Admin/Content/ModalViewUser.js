@@ -52,7 +52,6 @@ const ModalViewUser = (props) => {
                                     onChange={(event) => setUsername(event.target.value)}
                                 />
                             </Form.Group>
-
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">

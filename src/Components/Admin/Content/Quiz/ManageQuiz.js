@@ -1,10 +1,11 @@
 import Table from 'react-bootstrap/Table';
 import Select from 'react-select';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './ManageQuiz.scss';
 import { postCreateNewQuiz } from '../../../../Services/apiService';
 import { toast } from 'react-toastify';
 import TableQuiz from './TableQuiz';
+import { getQuizbyUser } from '../../../../Services/apiService';
 const options = [
     { value: 'EASY', label: 'Easy' },
     { value: 'MEDIUM', label: 'Medium' },
@@ -15,7 +16,6 @@ const ManageQuiz = (props) => {
     const [description, setDescription] = useState('')
     const [type, setType] = useState('')
     const [image, setImage] = useState(null)
-
     const handleChangeFile = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
             setImage(event.target.files[0]);
