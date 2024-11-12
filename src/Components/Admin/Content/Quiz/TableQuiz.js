@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getAllQuizByAdmin } from "../../../../Services/apiService"
 import ModalViewQuiz from "./ModalViewQuiz"
 import ModalUpdateQuiz from "./ModalUpdateQuiz"
+import ModalDeleteQuiz from "./ModalDeleteQuiz"
 
 const TableQuiz = (props) => {
     const [listQuiz, setListQuiz] = useState([])
@@ -9,6 +10,8 @@ const TableQuiz = (props) => {
     const [viewData, setViewData] = useState({})
     const [showUpdateQuiz, setShowUpdateQuiz] = useState(false)
     const [quizUpdate, setQuizUpdate] = useState({})
+    const [showDeleteQuiz, setShowDeleteQuiz] = useState(false)
+    const [quizDelete, setQuizDelete] = useState({})
     useEffect(() => {
         fetchAllQuizByAdmin()
     }, [])
@@ -26,7 +29,8 @@ const TableQuiz = (props) => {
         setQuizUpdate(user)
     }
     const handleClickBtnDelete = (user) => {
-        alert(`Click Delete Button`)
+        setShowDeleteQuiz(true)
+        setQuizDelete(user)
     }
     const resetQuizUpdate = () => {
         setQuizUpdate({})
@@ -94,6 +98,13 @@ const TableQuiz = (props) => {
                 setQuizUpdate={setQuizUpdate}
                 fetchAllQuizByAdmin={fetchAllQuizByAdmin}
                 resetQuizUpdate={resetQuizUpdate}
+            />
+            <ModalDeleteQuiz
+                show={showDeleteQuiz}
+                setShow={setShowDeleteQuiz}
+                quizDelete={quizDelete}
+                fetchAllQuizByAdmin={fetchAllQuizByAdmin}
+
             />
         </>
     )
