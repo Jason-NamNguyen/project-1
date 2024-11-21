@@ -70,7 +70,7 @@ const ModalViewQuiz = (props) => {
                         <Row>
                             <Form.Group controlId="formFile" className="mb-3">
                                 <Form.Label className='img-view'>
-                                    User Avatar
+                                    Quiz Image
                                 </Form.Label>
                             </Form.Group>
                             {quizImg === "" ?

@@ -8,6 +8,7 @@ import { BiPlusCircle } from "react-icons/bi";
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 import { putUpdateQuiz } from '../../../../Services/apiService';
+import './ModalUpdateQuiz.scss';
 const ModalUpdateQuiz = (props) => {
     const { show, setShow, quizUpdate, setQuizUpdate } = props
     const [name, setName] = useState('')
